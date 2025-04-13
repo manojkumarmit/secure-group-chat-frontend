@@ -51,8 +51,8 @@ The Secure Group Chat Application is a web-based platform that allows users to c
 3. Set up environment variables:
    Create a `.env` file in the root directory and add the following variables:
    ```env
-   MONGODB_URI=your_mongodb_connection_string
-   JWT_SECRET=your_jwt_secret
+   VITE_OPENAI_API_KEY=your_vite_openai_api_key
+   VITE_SOCKET_URL=your_vite_socket_url
    ```
 
 4. Start the development server:
