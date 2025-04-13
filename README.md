@@ -39,7 +39,7 @@ The Secure Group Chat Application is a web-based platform that allows users to c
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/secure-group-chat-frontend.git
+   git clone https://github.com/manojkumarmit/secure-group-chat-frontend.git
    cd secure-group-chat-frontend
    ```
 
