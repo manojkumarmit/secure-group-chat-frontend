@@ -97,10 +97,6 @@ Contributions are welcome! Please follow these steps to contribute:
 3. Commit your changes and push the branch to your fork.
 4. Create a pull request with a detailed description of your changes.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgements
 
 - [React](https://reactjs.org/)
