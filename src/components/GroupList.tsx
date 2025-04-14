@@ -107,34 +107,39 @@ const GroupList = ({ user, token, onEnterGroup }: {
 
     return (
         <div className="min-h-screen bg-gray-100">
-            <div className="flex items-center justify-between p-4 bg-white border-b">
+            <div className="flex items-center justify-between p-4 bg-white shadow-md">
                 <h1 className="text-2xl font-bold text-gray-800">Groups</h1>
-                <button
-                    onClick={logout}
-                    className="text-red-600 hover:text-red-800 px-4 py-2 rounded-lg hover:bg-red-50"
-                >
-                    Logout
-                </button>
+                <div className="flex items-center">
+                    <span className="text-gray-700 font-semibold mr-4 bg-blue-100 px-3 py-1 shadow">
+                        {user.name}
+                    </span>
+                    <button
+                        onClick={logout}
+                        className="text-red-600 hover:text-red-800 px-4 py-2 rounded-lg hover:bg-red-50"
+                    >
+                        Logout
+                    </button>
+                </div>
             </div>
             <div className="p-4">
-                <h2 className="text-xl font-bold mb-2">Create Group</h2>
-                <div className="flex mb-4">
+                <h2 className="text-xl font-bold mb-4">Create Group</h2>
+                <div className="flex mb-6">
                     <input
                         type="text"
                         placeholder="Group name"
                         value={newGroupName}
                         onChange={(e) => setNewGroupName(e.target.value)}
-                        className="border px-3 py-2 mr-2 rounded"
+                        className="border px-3 py-2 mr-2 rounded w-full"
                     />
                     <button
                         onClick={createGroup}
-                        className="bg-blue-600 text-white px-4 py-2 rounded"
+                        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                     >
                         Create
                     </button>
                 </div>
 
-                <div className="flex space-x-4 mb-4">
+                <div className="flex space-x-4 mb-6">
                     <button
                         onClick={() => setSelectedTab("my")}
                         className={`px-4 py-2 rounded ${selectedTab === "my" ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700"}`}
@@ -151,10 +156,10 @@ const GroupList = ({ user, token, onEnterGroup }: {
 
                 {selectedTab === "my" && (
                     <div>
-                        <h2 className="text-lg font-semibold mb-2">My Groups</h2>
+                        <h2 className="text-lg font-semibold mb-4">My Groups</h2>
                         {myGroups.map((g) => (
-                            <div key={g._id} className="flex justify-between items-center mb-2 p-2 border rounded">
-                                <div>{g.name}</div>
+                            <div key={g._id} className="flex justify-between items-center mb-4 p-4 bg-white shadow rounded-lg">
+                                <div className="text-gray-800">{g.name}</div>
                                 <div className="space-x-2">
                                     {g.creator === user.id ? (
                                         <>
@@ -193,13 +198,13 @@ const GroupList = ({ user, token, onEnterGroup }: {
 
                 {selectedTab === "other" && (
                     <div>
-                        <h2 className="text-lg font-semibold mb-2">Other Groups</h2>
+                        <h2 className="text-lg font-semibold mb-4">Other Groups</h2>
                         {otherGroups.map((g) => (
-                            <div key={g._id} className="flex justify-between items-center mb-2 p-2 border rounded">
-                                <div>{g.name}</div>
+                            <div key={g._id} className="flex justify-between items-center mb-4 p-4 bg-white shadow rounded-lg">
+                                <div className="text-gray-800">{g.name}</div>
                                 <button
                                     onClick={() => joinGroup(g._id)}
-                                    className="text-green-600 hover:underline"
+                                    className="text-green-500 hover:underline"
                                 >
                                     Join
                                 </button>

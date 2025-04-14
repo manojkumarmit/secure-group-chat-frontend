@@ -119,7 +119,7 @@ const Chat: React.FC<ChatProps> = ({ group, user, token, onBack }) => {
     socket.on("user typing", ({ user: typingUser, groupId }) => {
       if (groupId === group._id) {
         setTypingUser(typingUser);
-        setTimeout(() => setTypingUser(""), 2000);
+        setTimeout(() => setTypingUser(""), 3000);
       }
     });
 
@@ -227,6 +227,7 @@ const Chat: React.FC<ChatProps> = ({ group, user, token, onBack }) => {
   };
 
   const handleTyping = () => {
+    setSmartReplies([]);
     socket.emit("user typing", {
       user: user.name,
       groupId: group._id
@@ -272,7 +273,7 @@ const Chat: React.FC<ChatProps> = ({ group, user, token, onBack }) => {
 
   return (
     <div className="flex flex-col h-screen bg-gray-100">
-      <div className="flex items-center justify-between p-4 bg-white border-b">
+      <div className="flex items-center justify-between p-4 bg-white border-b shadow-md">
         <button
           onClick={onBack}
           className="text-blue-600 hover:text-blue-800 flex items-center"
@@ -283,12 +284,17 @@ const Chat: React.FC<ChatProps> = ({ group, user, token, onBack }) => {
           Back to Groups
         </button>
         <h2 className="text-xl font-semibold">{group.name}</h2>
-        <button
-          onClick={handleLogout}
-          className="text-red-600 hover:text-red-800 px-4 py-2 rounded-lg hover:bg-red-50"
-        >
-          Logout
-        </button>
+        <div className="flex items-center">
+          <span className="text-gray-700 font-semibold mr-4 bg-blue-100 px-3 py-1 shadow">
+            {user.name}
+          </span>
+          <button
+            onClick={handleLogout}
+            className="text-red-600 hover:text-red-800 px-4 py-2 rounded-lg hover:bg-red-50"
+          >
+            Logout
+          </button>
+        </div>
       </div>
       <div className="flex-grow p-4 overflow-y-auto">
         {Array.isArray(messages) && messages.map((msg, index) => {
